@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enes Muratgül</title>
+    <link href="blog.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+    <div class="header">
+        <div class="menu">
+            <a href="https://www.instagram.com/mrtglenes" target="_blank">
+                <img src="resimler/insta.png" width="30" height="30" alt="instagram">
+            </a>
+            <a href="https://www.twitter.com/mrtglenes" target="_blank">
+                <img src="resimler/twitter.png" width="27" height="25" alt="twitter">
+            </a>
+            <a href="https://www.youtube.com/mrtglenes" target="_blank">
+                <img src="resimler/youtube.png" width="28" height="26" alt="youtube">
+            </a>
+        </div>
+    </div>
+</header>
+    <div class="content">
+        <div class="main-image">
+            <img src="resimler/enesmuratgul.png" alt="Ana Resim">
+        </div>
+
+
+
+        <nav>
+            <hr class="centered-hr">
+            <div class="navigation">
+            <a href="https://enesmuratgul.com.tr/">Ana Sayfa</a>
+            <a href="https://enesmuratgul.com.tr/hakkimda.html">Hakkında</a>
+            <a href="https://enesmuratgul.com.tr/iletisim.html">İletişim</a>
+            </div>
+        </nav>   
+
+
+
+
+        <hr class="centered-hr">
+                      
+        <div class="main-image">
+            <img src="resimler/resim2.jpg" alt="Ana Resim">
+        </div>
+        <h1 style="text-align: center;">YÜZ TANIMA SİSTEMİ</h1>
+        <div class="dene">
+            
+Yüz tanıma sistemleri, günümüzde giderek artan bir popülerlik kazanan biyometrik güvenlik teknolojilerinden biridir. Bu sistemler, bireylerin benzersiz yüz özelliklerini kullanarak kimlik doğrulama ve tanıma işlemlerini gerçekleştirir. Bir kamera ve özel yazılım kombinasyonu aracılığıyla çalışan bu teknoloji, yüzdeki özel noktaları analiz eder ve bu verileri dijital formata dönüştürerek kaydeder. Güvenlik uygulamalarından cep telefonlarına kadar geniş bir yelpazede kullanılan yüz tanıma sistemleri, parola veya kart kullanımına göre daha hızlı ve güvenli bir kimlik doğrulama yöntemi sunar. Ancak, bu teknolojinin kullanımı bazı özel yaşam ve gizlilik endişelerini beraberinde getirerek tartışmalara neden olmuştur. Her ne kadar güvenlik açısından etkili olsa da, bu sistemlerin kullanımının denetlenmesi ve düzenlenmesi konusunda dikkatli bir yaklaşımın benimsenmesi gerekmektedir.
+        </div>
+        <br>
+        <h2 style="text-align: center;">KOD ÖRNEĞİ</h2>
+        <code>
+            <pre>
+import cv2
+import mediapipe as mp
+import time
+import random
+import string
+mp_draw = mp.solutions.drawing_utils
+mp_hand = mp.solutions.hands
+tipIds = [4, 8, 12, 16, 20]
+video = cv2.VideoCapture(0)
+with mp_hand.Hands(min_detection_confidence=0.5
+, min_tracking_confidence=0.5) as hands:
+password = ''.join(random.choices(string.ascii_
+letters + string.digits, k=10))
+timer_started = False
+timer_start_time = 0
+while True:
+ret, image = video.read()
+image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+image.flags.writeable = False
+results = hands.process(image)
+image.flags.writeable = True
+image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
+image = cv2.flip(image, 1)
+lmList = []
+if results.multi_hand_landmarks:
+for hand_landmark in results.multi_hand_landma
+rks:
+myHands = results.multi_hand_landmarks[0]
+lmList.extend([[id, int(lm.x * image.shape[1]),
+ int(lm.y * image.shape[0])] for id, lm in enum
+ erate(myHands.landmark)])                    
+fingers = []
+if lmList:
+fingers.append(1 if lmList[tipIds[0]][1] > lmLis
+t[tipIds[0] - 1][1] else 0)
+fingers.extend([1 if lmList[tipIds[id]][2] < lmL
+ist[tipIds[id] - 2][2] else 0 for id in range(1,
+ 5)])
+total = fingers.count(1)
+if total == 3:
+if not timer_started:
+timer_start_time = time.time()
+timer_started = True
+elapsed_time = time.time() - timer_start_time
+if elapsed_time >= 5:
+cv2.putText(image, password, (45, 375), cv2.FONT_
+HERSHEY_SIMPLEX, 2, (255, 0, 0), 5)
+else: timer_started = False              
+cv2.imshow("Frame", image)
+k = cv2.waitKey(1)
+if k == ord('q'):
+break
+video.release()
+cv2.destroyAllWindows()
+            </pre>
+        </code>
+        <h3 style="text-align: center;">BENZER İÇERİKLER</h3>
+        <div class="suggested-posts">
+
+            <div class="suggested-post">  
+                <a href="https://enesmuratgul.com.tr/blog1.html">
+                <img src="resimler/resim1.jpg" alt="Önerilen Resim 1"> </a>
+                <h3>Yüz Kilit Sistemi</h3>
+       
+            </div>
+
+
+            <div class="suggested-post">
+                <a href="https://enesmuratgul.com.tr/blog5.html">
+                <img src="resimler/resim5.jpg" alt="Önerilen Resim 2"> </a>
+                <h3>Dokunmatik Dünya</h3>
+      
+            </div>
+
+          
+            <div class="suggested-post">
+                <a href="https://enesmuratgul.com.tr/blog6.html">
+                <img src="resimler/resim6.jpg" alt="Önerilen Resim 3"> </a>
+                <h3>Yapay Zeka</h3>
+
+            </div>
+
+            
+        </div>
+    </div>
+<footer>
+    <div class="enesim">
+        Copyright 2023 © All rights Reserved by Enes Muratgül
+    </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: #fbd3e9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        h1 {
+            color: #ff007f;
+            font-size: 2em;
+        }
+
+        button {
+            background-color: #ff007f;
+            color: white;
+            font-size: 1em;
+            padding: 10px 20px;
+            margin-top: 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #ff0055;
+        }
+    </style>
+    <title>Sevgilinin Doğum Günü</title>
+</head>
+<body>
+    <div class="container">
+        <h1>🎉 Mutlu Yıllar, Sena! 🎂</h1>
+        <button id="birthdayButton">BANA TIKLA SENA </button>
+    </div>
+
+    <script>
+        document.getElementById("birthdayButton").addEventListener("click", function() {
+            var audio = new Audio("sarki.mp3");
+
+            
+            audio.play();
+
+           
+            alert("🎉 Mutlu Yıllar,  🎂 Doğum Günün Kutlu Olsun KARRIMM!");
+        });
+    </script>
+</body>
+</html>
